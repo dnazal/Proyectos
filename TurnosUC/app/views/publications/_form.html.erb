@@ -1,0 +1,8 @@
+<%= simple_form_for @publication, :html => { :multipart => true} do |f|  %>
+    <%= f.input :lugar_origen%>
+    <%= f.input :lugar_destino%>
+    <%= f.input :disponibilidad%>
+    <%= f.input :comentarios%>
+    <%= select_tag :category_id, options_for_select(@categories)%>
+    <%= f.button :submit %>
+<% end %>

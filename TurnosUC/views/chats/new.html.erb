@@ -1,0 +1,29 @@
+Chateando 
+
+    <% Chat.all.each do |chat| %>
+        <br>
+        <tr>
+        <td><%= chat.user.username%> </td>
+        <td><%= chat.texto%> </td>
+        <% if chat.user.id == current_user.id %>
+            <td>
+            <td><%= link_to "Eliminar","/chat_delete/#{chat.id}", :class => "button is-danger is-rounded" %><td>
+            </td>
+        <% end %>
+        
+        
+    <% end %>  
+
+    
+<%= form_for ([current_user, current_user.chats.build]) do |f|  %>
+    <div class="field">
+        <%= f.label :Texto, :class => "label"%>
+        <div class="control">
+        <%= f.text_field :texto, :class => "input is-rounded" %>
+    </div>
+    <div>
+        <%= f.submit :submit %>
+    </div>
+
+
+<% end %>

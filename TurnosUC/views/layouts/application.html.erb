@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TurnoUc</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  </head>
+  
+  <body>
+
+  <header>
+    <div class="container">
+
+      <nav align="center" class="navbar has-shadow is-white">
+        <div class="navbar-brand">
+          <div class="navbar-menu">
+            <%= link_to "Muro de Publicaciones", root_path, class:"navbar-item" %>
+            <%= link_to "Crear Nueva Publicacion", publications_new_path, class:"navbar-item" %>
+            <%= link_to "Viajes Ida", publications_path(category: "IDA"), class:"navbar-item" %>
+            <%= link_to "Viajes Vuelta", publications_path(category: "VUELTA"), class:"navbar-item" %>
+            <% if user_signed_in? %>
+              <%= link_to "Editar Perfil", edit_user_registration_path, class:"navbar-item" %>
+              <%= link_to "Cerrar Sesión", destroy_user_session_path, class:"navbar-item"%>
+              <%= link_to "Chat", user_chats_path(current_user.id), class:"navbar-item"%>
+            <% else %>
+              <%= link_to "Iniciar Sesión", new_user_session_path, class:"navbar-item" %>
+              <%= link_to "Registrarse", new_user_registration_path, class:"navbar-item" %>
+              <%= link_to "Admin", new_admin_user_session_path, class:"navbar-item" %>
+            <% end %>
+          </div>
+        </div>
+      </nav>
+
+  </div>
+</nav>
+    <p class = "notice"><%=notice%></p>
+    <p class = "alert"><%=alert%></p>
+    <%= yield %>
+  </body>
+
+</html>

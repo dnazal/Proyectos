@@ -1,0 +1,38 @@
+
+<h1 class="title has-text-black is-2 has-background-primary">Publicaciones</h1>
+
+<%= link_to "Crear Publicación", publications_new_path, :class => "button is-danger is-rounded mb-3 mt-3 ml-3 mr-3"%>
+<table class="table table-background-color-red ml-3 mr-3 is-selected is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+  <tr>
+    <thead>
+      <th>Nombre de Usuario</th>
+      <th>Lugar de Origen</th>
+      <th>Lugar de Destino</th>
+      <th>Disponibilidad</th>
+      <th>Comentarios</th>
+    </thead>
+  </tr>
+    <% @publications.each do |publication| %>
+      <tr>
+        <td><%= publication.username%></td>
+        <td><%= publication.lugar_origen%></td>
+        <td><%= publication.lugar_destino %></td>
+        <td><%= publication.disponibilidad %></td>
+        <td><%= publication.comentarios %></td>
+        
+        <td><%= link_to "Mostrar", publication_path(publication), :class => "button is-danger is-rounded" %><td>
+        <% if current_user %>
+          <% if user_signed_in? %>
+            <% if publication.user_id == current_user.id %>
+              <td>
+                <%= link_to "Editar", edit_publication_path(publication), :class => "button is-danger is-rounded" %>
+                <%= link_to "Eliminar", "/publication_delete/#{publication.id}", method: :delete, data: { confirm: "Deseas eliminar esta publicación?"}, :class => "button is-danger is-rounded" %>
+              </td>
+            <% end %>  
+          <% end %>
+        <% end %>
+      </tr>
+    <% end %>
+</table>
+<br>
+

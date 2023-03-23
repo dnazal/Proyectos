@@ -1,0 +1,37 @@
+<h1 class="title has-text-black is-2 has-background-primary">Publicacion</h1>
+
+<table class="table table-background-color-red ml-3 mr-3 is-selected is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+    <tr>
+      <thead>
+        <th>Lugar de Origen</th>
+        <th>Lugar de Destino</th>
+        <th>Disponibilidad</th>
+        <th>Comentarios</th>
+        <th>Promedio de Criticas</th>
+        <th>Numero de Criticas</th>
+      </thead>
+    </tr>
+            <tr>
+            <td><%= @publication.lugar_origen%></td>
+            <td><%= @publication.lugar_destino %></td>
+            <td><%= @publication.disponibilidad %></td>
+            <td><%= @publication.comentarios %></td>
+            <td><%= @average_critica %></td>
+            <td><%= @publication.criticas.count %></td>
+            </tr>
+</table>
+
+<% if user_signed_in? %>
+    <%= link_to "Agregar Critica", new_publication_critica_path(@publication), :class => "button is-danger is-rounded"  %>
+    <%= link_to "Ver Solicitudes", publication_solicitud_path(@publication), :class => "button is-danger is-rounded" %>
+    <% if @publication.user_id == current_user.id %>
+        <%= link_to "Edit", edit_publication_path(@publication), :class => "button is-danger is-rounded" %>
+        <%= link_to "Delete", "/publication_delete/#{@publication.id}", method: :delete, :class => "button is-danger is-rounded"%>
+    <%else %>
+        <%= link_to "Agregar Solicitud", new_publication_solicitud_path(@publication), :class => "button is-danger is-rounded" %>
+    <% end %>
+<% end %>
+<p>
+<br>
+<h1 class="title has-text-black is-3 has-text-black is-2 has-background-primary" ">Criticas</h1>
+<%= render @publication.criticas %>

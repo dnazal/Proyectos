@@ -1,0 +1,75 @@
+<h1 class="title has-text-black is-2 has-text-centered">Registrarse</h1>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+
+  <div class="columns is-centered">
+    <div class="column is-centered is-4 has-background-primary">
+    <section class="section">
+      <div class="container">
+        <div class="field">
+          <label class="label">Mail</label>
+          <div class="control has-icon-left has-icon-right">
+            <input class="input is-success" type="email" placeholder="juanperez@uc.cl" <%= f.email_field :email, required: true, autofocus: true, input_html: { autocomplete: "email" } %>
+            <span class="icon is-small is-left">
+              <i class="fas fa-envelope"></i>
+            </span>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label">Nombre de Usuario</label>
+          <div class="control has-icon-left has-icon-right">
+            <input class="input is-success" type="text" placeholder="juanitoperez10" <%= f.text_field :username, required: true, autofocus: true, input_html: { autocomplete: "username" } %>
+            <span class="icon is-small is-left">
+              <i class="fas fa-user"></i>
+            </span>
+            <span class="icon is-small is-right">
+              <i class="fas fa-check"></i>
+            </span>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label">Numero de Telefono</label>
+          <div class="control has-icon-left has-icon-right">
+            <input class="input is-success" type="text" placeholder="50196667" <%= f.telephone_field :phone, required: true, autofocus: true, input_html: { autocomplete: "phone" } %>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label">Edad</label>
+          <div class="control has-icon-left has-icon-right">
+            <input class="input is-success" type="text" placeholder="21" <%= f.number_field :age, required: true, autofocus: true, input_html: { autocomplete: "age" } %>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label">Contraseña</label>
+          <div class="control has-icon-left has-icon-right">
+            <input class="input is-success" type="password" placeholder="Minimo 6 caracteres" <%= f.password_field :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length), input_html: { autocomplete: "new-password" } %>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label">Comprobar Contraseña</label>
+          <div class="control has-icon-left has-icon-right">
+            <input class="input is-success" type="password" placeholder="Repertir Contraseña" <%= f.password_field :password_confirmation, required: true, input_html: { autocomplete: "new-password" } %>
+          </div>
+        </div>
+
+        <%= f.label "Profile Photo" %>
+        <%= f.file_field :avatar %><br>
+
+        <div class="field is-grouped">
+          <div class="control">
+            <button class="button is-link">Registrarse</button>
+          </div>
+          </div>
+
+    
+      </div>
+    </section>
+    </div>
+  </div>
+
+<% end %>

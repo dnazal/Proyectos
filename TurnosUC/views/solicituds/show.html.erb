@@ -1,0 +1,30 @@
+
+
+<table class="table table-background-color-red ml-3 mr-3 is-selected is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+  <tr>
+    <thead>
+      <th>Comentarios</th>
+      <th>Estado</th>
+    </thead>
+  </tr>
+    <% @publication.solicituds.each do |solicitud|%>
+  <tr>
+    <td><%= solicitud.comentario %></td>
+    <td><%= solicitud.estado %></td>
+
+    
+    <% if user_signed_in? %>
+        <% if solicitud.user_id == current_user.id %>
+            <td>
+            <%= link_to "Editar", edit_publication_solicitud_path(solicitud.publication, solicitud) %>
+            <%= link_to "Delete", "/solicitud_delete/#{solicitud.id}", method: :delete %>
+            </td>
+        <% elsif Publication.find(solicitud.publication_id).user_id == current_user.id %>
+            <td>
+            <%= link_to "Editar", edit_publication_solicitud_path(solicitud.publication, solicitud) %>
+            </td>
+        <% end %>
+    <% end %>
+  </tr>
+    <% end %>
+</table>

@@ -1,0 +1,15 @@
+<h1 class="title has-text-black is-2 has-background-primary">Nueva Solictud</h1>
+<%= form_for([@publication, @publication.solicituds.build]) do |f|  %>
+    <div class="field">
+        <%= f.label :Comentario, :class => "label"%>
+        <div class="control">
+        <%= f.text_field :comentario, :class => "input is-rounded" %>
+        </div>
+        <%= select_tag :estado, options_for_select([ "En espera"], "En espera")%>
+    </div>
+    <div>
+        <%= f.submit :submit %>
+    </div>
+
+
+<% end %>

@@ -1,0 +1,13 @@
+<h1> Editar solicitud  </h1>
+
+<% if Publication.find(@solicitud.publication_id).user_id == current_user.id %>
+    <%= simple_form_for([@publication, @solicitud]) do |f| %>
+        <%= select_tag :estado, options_for_select([ "Aprobado", "En espera", "Rechazado" ], "En espera")%>
+        <%= f.button :submit%>
+    <%end %>
+<%else %>
+    <%= simple_form_for([@publication, @solicitud]) do |f| %>
+        <%= f.input :comentario%>
+        <%= f.button :submit%>
+    <%end %>
+<%end %>

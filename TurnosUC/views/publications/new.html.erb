@@ -1,0 +1,38 @@
+<h1 class="title has-text-black is-2 has-background-primary">Nueva Publicacion</h1>
+
+<%= form_for @publication do |f| %>
+  <div class="field">
+    <%= f.label :Lugar_de_Origen, :class => "label"%>
+    <div class="control">
+    <%= f.text_field :lugar_origen, :class => "input is-rounded" %>
+    </div>
+  </div>
+
+  <div class="field">
+    <%= f.label :Lugar_de_destino, :class => "label"%>
+    <div class="control">
+    <%= f.text_field :lugar_destino, :class => "input is-rounded" %>
+    </div>
+  </div>
+
+  <div class="field">
+    <%= f.label :Disponibilidad, :class => "label"%>
+    <div class="control">
+    <%= f.text_field :disponibilidad, :class => "input is-rounded" %>
+    </div>
+  </div>
+
+  <div class="field">
+    <%= f.label :Comentario, :class => "label"%>
+    <div class="control">
+    <%= f.text_field :comentarios, :class => "input is-rounded" %>
+    </div>
+  </div>
+
+  <%= f.select :category_id, @categories %>
+  <div>
+    <%= f.submit :crear %>
+  </div>
+
+<% end %>
+

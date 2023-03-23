@@ -1,0 +1,6 @@
+<%= simple_form_for([@publication, @publication.criticas.build]) do |f|  %>
+    <%= f.input :rating%>
+    <%= f.input :comment%>
+    <%= f.button :submit%>
+<%end %>
+

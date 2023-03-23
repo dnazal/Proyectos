@@ -1,0 +1,38 @@
+<h1 class="title has-text-black is-2 has-text-centered">Iniciar Sesion</h1>
+
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <div class="columns is-centered">
+    <div class="column is-centered is-4 has-background-primary">
+    <section class="section">
+      <div class="container">
+        <div class="field">
+          <label class="label">Mail</label>
+          <div class="control has-icon-left has-icon-right">
+            <input class="input is-success" type="email" <%= f.email_field :email, required: false, autofocus: true, input_html: { autocomplete: "email" } %>
+            <span class="icon is-small is-left">
+              <i class="fas fa-envelope"></i>
+            </span>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label">Contraseña</label>
+          <div class="control has-icon-left has-icon-right">
+            <input class="input is-success" type="password" <%= f.password_field :password, required: false, input_html: { autocomplete: "current-password" } %>
+          </div>
+        </div>
+
+        <div class="field is-grouped">
+          <div class="control">
+            <button class="button is-link">Iniciar Sesion</button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+    </div>
+  </div>
+
+<% end %>
+
+<%= render "devise/shared/links" %>

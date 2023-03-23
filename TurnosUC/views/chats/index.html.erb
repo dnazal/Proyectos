@@ -1,0 +1,27 @@
+<h1 class="title has-text-black is-2 has-background-primary">Chats</h1>
+
+
+<table class="table table-background-color-red ml-3 mr-3 is-selected is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+  <tr>
+    <thead>
+      <th>Nombre de Usuario</th>
+      <th>Email</th>
+      <th>Numero cel</th>
+    </thead>
+  </tr>
+    <% User.all.each do |user| %>
+      <tr>
+        <td><%= user.username%></td>
+        <td><%= user.email%></td>
+        <td><%= user.phone %></td>
+        <% if user.id != current_user.id %>
+            <td>
+            <td><%= link_to "Mensaje", new_user_chat_path(user.id), :class => "button is-danger is-rounded" %><td>
+            </td>
+        <% end %>
+      </tr>
+    <% end %>
+</table>
+
+<br>
+

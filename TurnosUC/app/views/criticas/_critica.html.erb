@@ -1,0 +1,21 @@
+<table class="table table-background-color-red ml-3 mr-3 is-selected is-bordered is-striped is-narrow is-hoverable is-fullwidth ">
+    <tr>
+      <thead>
+        <th>Evaluacion Critica</th>
+        <th>Comentario</th>
+      </thead>
+    </tr>
+            <tr>
+            <td><%= critica.rating %></td>
+            <td><%= critica.comment %></td>
+            </tr>
+</table>
+
+
+    <% if user_signed_in? %>
+        <% if critica.user_id == current_user.id %>
+            <%= link_to "Editar", edit_publication_critica_path(critica.publication, critica), :class => "button is-danger is-rounded"  %>
+            <%= link_to "Delete", "/critica_delete/#{critica.id}", method: :get, :class => "button is-danger is-rounded"  %>
+        <% end %>
+    <% end %>
+<p>
